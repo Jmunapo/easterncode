@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar color="darkblue">
+    <ion-title>
+      <div class="user-icon">
+        <img src="assets/imgs/glasses.jpg">
+      </div>
+       Let's talk about (LTA)
+      <br>
+      <p class="statusclass">{{type}}</p>
+    </ion-title>
+  </ion-navbar>
+  <div class="letstalk">
+    {{talks[0].message}}
+  </div>
+</ion-header>
+<ion-content #content>
+  <div class="chatwindow">
+    <ion-list no-lines>
+      <ion-item *ngFor="let item of talks; let i = index" text-wrap>
+        <div class="bubble you" *ngIf="item.sentby === userdata.uid">
+          <h3 >{{item.message}}</h3>
+          <div class="msg-time">{{item.timestamp | date:'mediumDate'}} | {{item.timestamp | date:'shortTime'}}</div>
+        </div>
+
+        <div class="bubble me" *ngIf="item.sentby !== userdata.uid">
+          <p>{{item.name}}</p>
+          <h3 >{{item.message}}</h3>
+          <div class="msg-time">{{item.timestamp | date:'mediumDate'}} | {{item.timestamp | date:'shortTime'}}</div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer ion-fixed>
+  <form>
+    <ion-toolbar class="no-border" color="white">
+      <ion-input [(ngModel)]="message" name="newmessage" class="newmsg" placeholder="Write your message ..."></ion-input>
+      <ion-buttons end>
+        <button ion-button (click)="sendPicMsg()" [disabled]="message !== ''">
+          <ion-icon class="camera-btn" name="camera"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-buttons end>
+        <button ion-button round type="submit" class="sentbtn" (click)="sendMessage()" [disabled]="message === ''">
+          <ion-icon name="send" color="wcolor" style="font-size: 2.2em;"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </form>
+</ion-footer>
+

@@ -1,0 +1,132 @@
+<div [class.overlay]="tolearnOverlay">
+
+</div>
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Eastern Coders Club</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="open('ChatsPage')">
+        <i class="fa fa-comments-o fa-2x faLinkBlue" aria-hidden="true"></i>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  
+  <ion-card>
+    <ion-list>
+      <button ion-item (click)="profile()">
+        <ion-avatar item-start>
+          <img src="{{avatar}}">
+        </ion-avatar>
+        <h2>{{username}}</h2>
+        <p>Edit Profile <i class="fa fa-pencil faGreen fa-2x" aria-hidden="true"></i></p>
+      </button>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-list>
+      <button ion-item (click)="open('NotifChatsPage')">
+        <h1 item-start >
+          <i class="fa fa-bell faYellow fa-fw" aria-hidden="true"></i>
+        </h1>
+        Notifications &amp; Chats
+        <p>View chats</p>
+        <div item-end class="right-icon">
+          
+          <ion-badge color="danger">
+            <span style="float: right;">
+              &nbsp;{{notificationcounter}}
+            </span>
+            <i class="fa fa-bell faYellow" aria-hidden="true"></i>
+          </ion-badge>
+        </div>
+      </button>
+
+      <button ion-item (click)="openToLearn('LearnPage')">
+        <h1 item-start>
+          <i class="fa fa-leanpub faOrange fa-fw" aria-hidden="true"></i>
+        </h1>
+        Learn Coding
+        <p>Algorithmic thinking | programming | computational thinking</p>
+      </button>
+
+      <button ion-item (click)="root('TeachPage')">
+        <h1 item-start>
+          <i class="fa fa-university faGreen fa-fw" aria-hidden="true"></i>
+        </h1>
+        Teach Coding
+        <p>Beginner's guide</p>
+      </button>
+
+      <button ion-item>
+        <h1 item-start>
+          <i class="fa fa-user-secret faBrown fa-fw" aria-hidden="true"></i>
+        </h1>
+        Admin Area
+      </button>
+  
+      <button ion-item>
+        <h1 item-start>
+          <i class="fa fa-bookmark faLinkBlue fa-fw" aria-hidden="true"></i>
+        </h1>
+        Files &amp; Links
+      </button>
+      
+      <button ion-item>
+        <h1 item-start>
+          <i class="fa fa-rocket faGreen fa-fw" aria-hidden="true"></i>
+        </h1>
+        Research Topics
+        <p>Contribute to the community research</p>
+      </button>
+      
+      <button ion-item>
+        <h1 item-start>
+          <i class="fa fa-terminal faBrown fa-fw" aria-hidden="true"></i>
+        </h1>
+        Today's Challenge
+        <p>Be the first to solve</p>
+      </button>
+
+      <button ion-item>
+        <h1 item-start>
+          <span class="fa-stack fa-sm">
+            <i class="fa fa-bed fa-stack-1x"></i>
+            <i class="fa fa-ban fa-stack-2x faRed"></i>
+          </span>
+        </h1>
+        Daily Motivation
+        <!-- Use random quote -->
+        <p>while(!(succed == try()));</p>
+      </button>
+    </ion-list>
+  </ion-card>
+</ion-content>
+
+<!-- Topics [class.active]="welcome[0]"-->
+<div class='wrap' [class.active]="tolearn">
+  <div class='content'>
+    <ion-list>
+      <ion-list-header>
+        Characters
+      </ion-list-header>
+
+      <ion-item *ngFor="let topic of topics; let i = index">
+        <ion-label> {{topic}}</ion-label>
+        <ion-checkbox [(ngModel)]="choose[i]" (ionChange)="topicChanged(topic, i)"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    <button (click)="selects('all')" ion-button icon-only clear style="float:left; padding:20px;">
+      ALL
+    </button>
+    <button (click)="selects('some')" ion-button icon-only clear style="float:right; padding:20px;">
+      SELECT
+    </button>
+  </div>
+</div>

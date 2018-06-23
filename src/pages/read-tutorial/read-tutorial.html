@@ -1,0 +1,18 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{tutorial.subject}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <h3>{{tutorial.title}}</h3>
+  <p [innerHTML]="tutorial.article"></p>
+  <div text-center>
+    <span>4 Comments</span>
+    <button ion-button color="ec-primary" round outline icon-left>
+      View
+    </button>
+  </div>
+</ion-content>

@@ -1,0 +1,39 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Tutorials</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div text-center *ngIf="notready">
+    <ion-spinner name="bubbles"></ion-spinner>
+  </div>
+  <ion-item-group *ngFor="let subject of tutorials">
+    <ion-item-divider color="light">{{subject[0].subject}}</ion-item-divider>
+    <button ion-item *ngFor="let tutorial of subject"  (click)="viewTutorial(tutorial)">
+       <h4>
+         {{tutorial.title}}
+       </h4>
+       <p>
+        <ion-note>
+          by : {{tutorial.tutor.name}}
+        </ion-note>
+       </p>
+    </button>
+  </ion-item-group>
+  <div text-center *ngIf="!alldataloaded && !notready">
+    <button ion-button color="ec-primary" round outline icon-left (click)="loadMoreTutorials()">
+      <i *ngIf="!loading" class="fa fa-refresh" aria-hidden="true"></i>
+      <i *ngIf="loading" class="fa fa-refresh fa-spin fa-fw"></i>
+      &nbsp; Load More
+    </button>
+  </div>
+  <!-- <ion-infinite-scroll (ionInfinite)="loadMoreTutorials($event)">
+    <ion-infinite-scroll-content
+     loadingSpinner="bubbles" loadingText="Loading more tutorials..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+</ion-content>

@@ -1,0 +1,19 @@
+page-add-project {
+    .card {
+        margin: 10% 0 0;
+        width: 100%;
+        background-color: transparent;
+        @include border-radius(0);
+        .card-content {
+            padding: 0;
+        }
+        .list>.item-block:first-child {
+            border-top: 0.55px solid $grey-c8;
+        }
+    }
+    .errormsg p {
+        background-color: rgba(255, 0, 0, .3);
+        border: 1px solid #FF0000;
+        padding: 5px;
+    }
+}

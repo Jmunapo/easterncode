@@ -1,0 +1,99 @@
+.title.title-md {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    height: 100%;
+    width: 70%;
+    text-align: center;
+}
+
+.faGreen {
+    color: #28a54c;
+}
+
+.faOrange {
+    color: #ff6600;
+}
+
+.faLightBlue {
+    color: #31C0E6;
+}
+
+.faYellow {
+    color: #f2c100;
+}
+.faBrown{
+    color: #BC8F8F;
+}
+
+.faLinkBlue{
+    color: #1E90FF
+}
+
+.faRed {
+    color: #f53d3d
+}
+
+.wrap {
+    position: absolute;
+    overflow: hidden;
+    top: 10%;
+    right: 10%;
+    left: 10%;
+    padding: 20px 30px;
+    display: block;
+    border-radius: 4px;
+    transform: translateY(20px);
+    transition: all 0.5s;
+    visibility: hidden;
+    z-index: 999;
+}
+
+.wrap .content {
+    opacity: 0;
+}
+
+.wrap:before {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: white;
+    content: "";
+    bottom: 10px;
+    left: 50%;
+    top: 95%;
+    color: #fff;
+    border-radius: 50%;
+    -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.wrap.active {
+    display: block;
+    visibility: visible;
+    box-shadow: 2px 3px 16px silver;
+    transition: all 600ms;
+    transform: translateY(0px);
+    transition: all 0.5s;
+}
+
+.wrap.active:before {
+    height: 2000px;
+    width: 2000px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    margin-left: -1000px;
+    margin-top: -1000px;
+    display: block;
+    -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.wrap.active .content {
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    transition: all 600ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}

@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Event Calendar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-fab top right edge>
+    <button ion-fab color="primary" mini (click)="addEvent($event)">
+      <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+    </button>
+  </ion-fab>
+
+  <ion-calendar #calendar [events]="currentEvents" (onDaySelect)="onDaySelect($event)" (onMonthSelect)="onMonthSelect($event)"></ion-calendar>
+
+  <div *ngIf="hasEvent">
+    <ion-card *ngFor="let e of this.selectedDate.events">
+      <ion-item>
+        <h1 item-start>
+          {{this.selectedDate.date}}
+        </h1>
+        <h2> &nbsp; &nbsp;{{e.title}}</h2>
+        <button ion-button color="danger" clear icon-only item-end>
+          <ion-icon name='notifications'></ion-icon>
+        </button>
+        <ion-note> &nbsp; &nbsp;{{e.time}} HRS</ion-note>
+      </ion-item>
+    
+      <ion-card-content>
+        <p>{{e.description}}</p>
+      </ion-card-content>
+         
+    </ion-card>
+  </div>
+  
+</ion-content>

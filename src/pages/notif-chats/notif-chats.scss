@@ -1,0 +1,30 @@
+page-notif-chats {
+    .nothing {
+        margin: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        width: 100%;
+        min-height: 300px;
+        color: $grey;
+        @include border-radius(0);
+        .cont {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+    .unread {
+        padding-left: 10px;
+        background-image:linear-gradient(to bottom, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%),
+        linear-gradient(to bottom, rgb(105, 141, 161) 0%, rgb(98, 169, 197) 100%);
+        background-clip: content-box,
+        padding-box;
+    }
+    .note-md {
+        font-size: small;
+    }
+}

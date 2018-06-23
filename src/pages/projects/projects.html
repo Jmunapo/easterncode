@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left *ngIf="filtered">
+      <button ion-button icon-only (click)="viewAllProjects()">
+        <ion-icon color="primary" ios="ios-close-circle" md="md-close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{pagetitle}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="toggleSearch()">
+        <ion-icon name='search'></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-toolbar *ngIf="showSearch">
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+  <div style="text-align: center" *ngIf="notready">
+    <ion-spinner name="bubbles"></ion-spinner>
+  </div>
+  <ion-list>
+    <button ion-item *ngFor="let p of projects" (click)="viewProject(p)">
+      <ion-thumbnail item-start>
+        <img src="assets/imgs/p3.jpg">
+      </ion-thumbnail >
+      <ion-note>{{p.category}}</ion-note>
+      <p>{{p.title}}</p>
+      <p class="summary">{{p.summary}}</p>
+      <ion-note>by {{(p.by.uid === user)? 'You' : p.by.displayName}}</ion-note>
+    </button>
+  </ion-list>
+
+   <ion-fab right top edge #fab>
+    <button ion-fab color="secondary" mini><ion-icon name="arrow-dropdown"></ion-icon></button>
+    <ion-fab-list side="bottom">
+      <button ion-fab (click)="addProject()"><ion-icon name="add"></ion-icon></button>
+      <button ion-fab (click)="myProjects(fab)"><ion-icon ios="ios-briefcase" md="md-briefcase"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

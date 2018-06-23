@@ -1,0 +1,7 @@
+<ion-tabs tabsPlacement="bottom" tabsHideOnSubPages="true" selectedIndex="0">
+    <ion-tab [root]="homeRoot" tabTitle="Home" tabIcon="fa-home"></ion-tab>
+    <ion-tab [root]="eventsRoot" tabTitle="Events" tabIcon="fa-calendar"></ion-tab>
+    <ion-tab [root]="mapRoot" tabTitle="EC Club" tabIcon="fa-compass"></ion-tab>
+    <ion-tab [root]="projectsRoot" tabTitle="Projects" tabIcon="fa-cubes"></ion-tab>
+    <ion-tab style="cursor: pointer;" tabIcon="fa-ellipsis-v" (ionSelect)="openSettings()"></ion-tab>
+</ion-tabs>

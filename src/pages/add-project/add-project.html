@@ -1,0 +1,66 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add Project</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+
+  <form [formGroup]="authForm">
+    <ion-card>
+      <ion-card-content>
+        <div class="errormsg">
+          <div *ngIf="title.errors && title.touched">
+            <p>Project Title is required.</p>
+          </div>
+          <div *ngIf="category.errors && category.touched">
+            <p>Project Category is required.</p>
+          </div>
+          <div *ngIf="summary.errors && summary.touched">
+            <p>Project Summary is required.</p>
+          </div>
+        </div>
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              <ion-icon ios="logo-html5" md="logo-html5"></ion-icon>
+            </ion-label>
+            <ion-input id="title" type="text" [formControl]="title" placeholder="Project Title" name="title" [(ngModel)]="project.title"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-icon ios="ios-list-box" md="md-list-box"></ion-icon>
+            </ion-label>
+            <ion-textarea id="summary" [formControl]="summary" placeholder="Project Summary" name="summary" [(ngModel)]="project.summary"></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-icon ios="ios-filing" md="md-filing"></ion-icon>
+              &nbsp;&nbsp;&nbsp;Project Category
+            </ion-label>
+            <ion-select multiple="true" [(ngModel)]="project.category"[formControl]="category" [selectOptions]="musicAlertOpts">
+              <ion-option>Design</ion-option>
+              <ion-option>Website</ion-option>
+              <ion-option>Desktop Application</ion-option>
+              <ion-option>Mobile Application</ion-option>
+              <ion-option>Web Application</ion-option>
+              <ion-option >Raspberry Pi</ion-option>
+            </ion-select>
+          </ion-item>
+          <!-- <ion-item> -->
+          <div class="button-container">
+            <button ion-button full round outline color="dark" (click)="saveProject()" [disabled]="!authForm.valid">Add Project</button>
+          </div>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </form>
+  <div>
+    <p padding>
+       *Please note that: Your projects will be only visible to you untill approved and you will be notified.
+    </p>
+  </div>
+</ion-content>

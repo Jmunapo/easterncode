@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add Project Member</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon color="danger" ios="ios-close-circle" md="md-close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-toolbar *ngIf="showSearch">
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
+  <ion-list>
+    <button ion-item *ngFor="let m of members" (click)="selectUser(m)">
+        {{m.displayName}}
+    </button>
+  </ion-list>
+</ion-content>

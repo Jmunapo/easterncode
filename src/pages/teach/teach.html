@@ -1,0 +1,82 @@
+<ion-content [class.bodyonpreview]="preview">
+  <button ion-fab color="danger" mini (click)="gotoHome()">
+    <i class="fa fa-times" aria-hidden="true"></i>
+  </button>
+    <ion-toolbar no-border-top (click)="newArticle('edit')">{{articleSubject}} &nbsp; | &nbsp;{{articletitle}} <span class="edit-title"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></span></ion-toolbar>
+  <div style="padding: 0 10px;" [class.onpreview]="preview">
+    <p id="type-here" contenteditable="false" spellcheck="true" (blur)="onBlur($event)" (paste)="onPaste($event)"></p>
+  </div>
+  
+  <ion-fab top right edge #fab *ngIf="!preview">
+    <button ion-fab color="vibrant" mini><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+    <ion-fab-list>
+      <button ion-fab (click)="switchTyping(fab)"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></button>
+      <button ion-fab (click)="welcomeSkip(0)"><i class="fa fa-question fa-2x" aria-hidden="true"></i></button>
+      <button ion-fab (click)="previewArticle(fab)"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></button>
+      <button ion-fab (click)="saveDocument(fab)"><i class="fa fa-paper-plane fa-2x" aria-hidden="true"></i></button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-fab bottom left #myfab *ngIf="!preview">
+    <button ion-fab class="editor outer" mini><i class="fa fa-text-width fa-2x" aria-hidden="true"></i></button>
+    <ion-fab-list side="right">
+      <button [class.paragraph]="!paragraph" ion-fab class="editor inner" (click)="edit('formatblock', 'H4')"><i class="fa fa-header fa-2x faLinkBlue" aria-hidden="true"></i></button>
+      <button [class.paragraph]="paragraph" ion-fab class="editor inner" (click)="edit('formatblock', 'P')"><i class="fa fa-paragraph fa-2x faLinkBlue" aria-hidden="true"></i></button>
+      <button [class.boldactive]="boldactive" ion-fab class="editor inner" (click)="edit('bold')"><i class="fa fa-bold fa-2x" aria-hidden="true"></i></button>
+      <button [class.italicactive]="italicactive" ion-fab class="editor inner" (click)="edit('italic')"><i class="fa fa-italic fa-2x" aria-hidden="true"></i></button>
+      <button [class.indent]="indent" ion-fab class="editor inner" (click)="edit('indent')"><i class="fa fa-indent fa-2x faLinkBlue" aria-hidden="true"></i></button>
+      <button [class.indent]="!indent" ion-fab class="editor inner" (click)="edit('outdent')"><i class="fa fa-outdent fa-2x faLinkBlue" aria-hidden="true"></i></button>
+      <button ion-fab class="editor inner" (click)="edit('code')"><i class="fa fa-code fa-2x" aria-hidden="true"></i></button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <!-- preview -->
+  <div class='preview-pane' [class.paneactive]="preview">
+    <div class='content'>
+      <p [innerHTML]="previewdata"></p>
+      <button bottom right edge ion-fab mini class="preview-close" color="light" (click)="closePreview()">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+
+
+  <!-- Welcome -->
+  <div class='wrap' [class.active]="welcome[0]">
+    <div class='content'>
+      <h2>Well Hello {{userdata.name}}!</h2>
+      <p [innerHTML]="welcomeData.level0"></p>
+          <button (click)="welcomeSkip(1)" ion-button icon-only clear style="float:left; padding:20px;">
+            SKIP
+          </button>
+          <button (click)="welcomeNav(0,1)" ion-button icon-only clear style="float:right; padding:20px;">
+            <i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>
+          </button>
+    </div>
+  </div>
+
+    <div class='wrap' [class.active]="welcome[1]">
+      <div class='content'>
+        <p [innerHTML]="welcomeData.level1"></p>
+        <button (click)="welcomeNav(1,0)" ion-button icon-only clear style="float:left; padding:20px;">
+          <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+        </button>
+        <button (click)="welcomeNav(1,2)" ion-button icon-only clear style="float:right; padding:20px;">
+          <i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class='wrap' [class.active]="welcome[2]">
+      <div class='content'>
+        <p [innerHTML]="welcomeData.level2"></p>
+        <button (click)="welcomeNav(2,1)" ion-button icon-only clear style="float:left; padding:20px;">
+          <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+        </button>
+        <button (click)="welcomeFinish()" ion-button icon-only clear style="float:right; padding:20px;">
+          FINISH
+        </button>
+      </div>
+    </div>
+</ion-content>
